@@ -1,8 +1,8 @@
 ﻿#include <iostream>
 using namespace std;
 enum months {
-    Exit,
-    Январь,
+    //Exit,
+    Январь = 1,
     Февраль,
     Март,
     Апрель,
@@ -22,14 +22,21 @@ int main() {
     do {
         cout << "Введите номер месяца: ";
         cin >> mn;
+        if (mn > 12)
+        {
+            cout << "Неверный ввод!\n";
+            cout << "Введите номер месяца:";
+            cin >> mn;
+        }
 
         months month = static_cast<months>(mn);
 
+
         switch (month) {
-        case months::Exit:
+            /*case months::Exit:
             temp = false;
-            cout << "До свидания";
-            break;
+           cout << "До свидания";
+            break;*/
         case months::Январь:
             cout << "Январь" << endl;
             break;
@@ -66,6 +73,12 @@ int main() {
         case months::Декабрь:
             cout << "Декабрь" << endl;
             break;
+
         }
-    } while (temp);
+    } while (mn > 0 && mn < 13);
+    if (mn == 0)
+    {
+        cout << "До свидания!";
+        return 0;
+    }
 }
